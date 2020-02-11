@@ -20,7 +20,7 @@ def partition(arr, lowIndex, highIndex):
     pivot = arr[pivotIndex]
     #i represents the index from which all elements before it and in it are less than the pivot
     i = lowIndex -1 
-    for j in range(lowIndex, highIndex):
+    for j in range(lowIndex, highIndex + 1):
         if arr[j] < pivot: #what j with the value in i
             i += 1
             #if the pivotIndex is to swap, then update the pivotIndex
