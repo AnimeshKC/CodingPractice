@@ -14,7 +14,8 @@ def heapify(arr, heapSize, root):
 
 def heapSort(arr):
     arrSize = len(arr)
-    for i in range(arrSize, -1, -1):
+
+    for i in range((arrSize//2)-1, -1, -1):
         root = i
         heapify(arr, arrSize, root)
     for i in range(arrSize-1, 0, -1):
@@ -24,7 +25,7 @@ def heapSort(arr):
 def main():
     minInt = 0
     maxInt = 255
-    numRange = 5000
+    numRange = 50
     randomList = [random.randrange(minInt, maxInt) for i in range(numRange)]
     #randomList = [7, 11, 89, 2, 56, 12, 8, 10, 0, 55, 23]
     print("Before the sort: ")
