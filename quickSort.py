@@ -1,7 +1,7 @@
 import random
 
 #function median of three will only get called if length is at least 2
-#median of first, middle, and last element of list becomes the last element of the list
+#return index of the pivot, which is the sorted median of the 3 indices
 def medianOfThree(arr, lowIndex, highIndex):
     lowValue = arr[lowIndex]
     highValue = arr[highIndex]
