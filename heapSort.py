@@ -14,7 +14,6 @@ def heapify(arr, heapSize, root):
 
 def heapSort(arr):
     arrSize = len(arr)
-
     for i in range((arrSize//2)-1, -1, -1):
         root = i
         heapify(arr, arrSize, root)
