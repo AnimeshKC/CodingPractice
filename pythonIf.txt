@@ -1,0 +1,12 @@
+import math
+import os
+import random
+import re
+import sys
+
+
+#If n is odd or even between 6 and 20, Weird
+#else, not weird
+if __name__ == '__main__':
+    n = int(raw_input().strip())
+    print(n)
