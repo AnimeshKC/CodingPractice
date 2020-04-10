@@ -48,4 +48,5 @@ def main():
     quickSort(randomList, 0, len(randomList)-1)
     print(randomList)
 
-main()
+if __name__ == "__main__":
+    main()
