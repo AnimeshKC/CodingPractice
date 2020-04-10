@@ -1,0 +1,13 @@
+C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\GradeBooks\src\GradeBook\bin\Debug\netcoreapp3.1\GradeBook.exe
+C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\GradeBooks\src\GradeBook\bin\Debug\netcoreapp3.1\GradeBook.deps.json
+C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\GradeBooks\src\GradeBook\bin\Debug\netcoreapp3.1\GradeBook.runtimeconfig.json
+C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\GradeBooks\src\GradeBook\bin\Debug\netcoreapp3.1\GradeBook.runtimeconfig.dev.json
+C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\GradeBooks\src\GradeBook\bin\Debug\netcoreapp3.1\GradeBook.dll
+C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\GradeBooks\src\GradeBook\bin\Debug\netcoreapp3.1\GradeBook.pdb
+C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\GradeBooks\src\GradeBook\obj\Debug\netcoreapp3.1\GradeBook.csprojAssemblyReference.cache
+C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\GradeBooks\src\GradeBook\obj\Debug\netcoreapp3.1\GradeBook.AssemblyInfoInputs.cache
+C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\GradeBooks\src\GradeBook\obj\Debug\netcoreapp3.1\GradeBook.AssemblyInfo.cs
+C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\GradeBooks\src\GradeBook\obj\Debug\netcoreapp3.1\GradeBook.dll
+C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\GradeBooks\src\GradeBook\obj\Debug\netcoreapp3.1\GradeBook.pdb
+C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\GradeBooks\src\GradeBook\obj\Debug\netcoreapp3.1\GradeBook.csproj.CoreCompileInputs.cache
+C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\GradeBooks\src\GradeBook\obj\Debug\netcoreapp3.1\GradeBook.genruntimeconfig.cache

@@ -1,0 +1,14 @@
+C:\Users\kcani\Desktop\Programming\c#\IntroUI\bin\Debug\netcoreapp3.1\IntroUI.exe
+C:\Users\kcani\Desktop\Programming\c#\IntroUI\bin\Debug\netcoreapp3.1\IntroUI.deps.json
+C:\Users\kcani\Desktop\Programming\c#\IntroUI\bin\Debug\netcoreapp3.1\IntroUI.runtimeconfig.json
+C:\Users\kcani\Desktop\Programming\c#\IntroUI\bin\Debug\netcoreapp3.1\IntroUI.runtimeconfig.dev.json
+C:\Users\kcani\Desktop\Programming\c#\IntroUI\bin\Debug\netcoreapp3.1\IntroUI.dll
+C:\Users\kcani\Desktop\Programming\c#\IntroUI\bin\Debug\netcoreapp3.1\IntroUI.pdb
+C:\Users\kcani\Desktop\Programming\c#\IntroUI\bin\Debug\netcoreapp3.1\IntroLibrary.dll
+C:\Users\kcani\Desktop\Programming\c#\IntroUI\bin\Debug\netcoreapp3.1\IntroLibrary.pdb
+C:\Users\kcani\Desktop\Programming\c#\IntroUI\obj\Debug\netcoreapp3.1\IntroUI.csprojAssemblyReference.cache
+C:\Users\kcani\Desktop\Programming\c#\IntroUI\obj\Debug\netcoreapp3.1\IntroUI.AssemblyInfoInputs.cache
+C:\Users\kcani\Desktop\Programming\c#\IntroUI\obj\Debug\netcoreapp3.1\IntroUI.AssemblyInfo.cs
+C:\Users\kcani\Desktop\Programming\c#\IntroUI\obj\Debug\netcoreapp3.1\IntroUI.csproj.CopyComplete
+C:\Users\kcani\Desktop\Programming\c#\IntroUI\obj\Debug\netcoreapp3.1\IntroUI.dll
+C:\Users\kcani\Desktop\Programming\c#\IntroUI\obj\Debug\netcoreapp3.1\IntroUI.pdb

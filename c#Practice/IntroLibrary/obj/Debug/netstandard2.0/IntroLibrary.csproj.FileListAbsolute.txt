@@ -1,0 +1,8 @@
+C:\Users\kcani\Desktop\Programming\c#\IntroLibrary\bin\Debug\netstandard2.0\IntroLibrary.deps.json
+C:\Users\kcani\Desktop\Programming\c#\IntroLibrary\bin\Debug\netstandard2.0\IntroLibrary.dll
+C:\Users\kcani\Desktop\Programming\c#\IntroLibrary\bin\Debug\netstandard2.0\IntroLibrary.pdb
+C:\Users\kcani\Desktop\Programming\c#\IntroLibrary\obj\Debug\netstandard2.0\IntroLibrary.csprojAssemblyReference.cache
+C:\Users\kcani\Desktop\Programming\c#\IntroLibrary\obj\Debug\netstandard2.0\IntroLibrary.AssemblyInfoInputs.cache
+C:\Users\kcani\Desktop\Programming\c#\IntroLibrary\obj\Debug\netstandard2.0\IntroLibrary.AssemblyInfo.cs
+C:\Users\kcani\Desktop\Programming\c#\IntroLibrary\obj\Debug\netstandard2.0\IntroLibrary.dll
+C:\Users\kcani\Desktop\Programming\c#\IntroLibrary\obj\Debug\netstandard2.0\IntroLibrary.pdb

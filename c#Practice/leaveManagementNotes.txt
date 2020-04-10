@@ -1,0 +1,24 @@
+Create Interfaces
+
+ILeaveTypeRepository : IRepositoryBase<LeaveType>
+
+LeaveType : ILeaveTypeRepository
+
+Implement the base interface 
+Repository Base uses a template <T> for generic type
+IRepositoryBase only has the CRUD functions
+
+
+In order to hook classes to the database, need to create an ApplicationDbContext object
+
+private readonly ApplicationDbContext _db;
+
+Make the constructor take an ApplicationDbContext object as input and set it to _db
+
+In startup.cs, need to add references for the Repositories and Contracts:
+
+services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();
+
+ViewModel may have fewer components than the class itself since it's for the view. 
+
+Viewmodels should not reference data classes, just other view models
