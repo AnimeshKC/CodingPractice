@@ -1,2 +1,0 @@
-C:\Users\kcani\Desktop\Programming\CodingPractice\C++Practice\Containers\Debug\Containers.exe
-C:\Users\kcani\Desktop\Programming\CodingPractice\C++Practice\Containers\Debug\Containers.pdb
