@@ -1,7 +1,0 @@
-C:\Users\kcani\Desktop\Programming\CodingPractice\c#Practice\GradeBooks\obj\Debug\GradeBooks.csproj.CoreCompileInputs.cache
-C:\Users\kcani\Desktop\Programming\CodingPractice\c#Practice\GradeBooks\bin\Debug\GradeBooks.exe.config
-C:\Users\kcani\Desktop\Programming\CodingPractice\c#Practice\GradeBooks\bin\Debug\GradeBooks.exe
-C:\Users\kcani\Desktop\Programming\CodingPractice\c#Practice\GradeBooks\bin\Debug\GradeBooks.pdb
-C:\Users\kcani\Desktop\Programming\CodingPractice\c#Practice\GradeBooks\obj\Debug\GradeBooks.csprojAssemblyReference.cache
-C:\Users\kcani\Desktop\Programming\CodingPractice\c#Practice\GradeBooks\obj\Debug\GradeBooks.exe
-C:\Users\kcani\Desktop\Programming\CodingPractice\c#Practice\GradeBooks\obj\Debug\GradeBooks.pdb
