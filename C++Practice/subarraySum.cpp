@@ -1,14 +1,18 @@
+#include <unordered_map>
+#include <vector>
 
-int subarraySum(const vector<int>& nums, int k){
-	int n = nums.size();
+using std::unordered_map;
+using std::vector;
+
+int subarraySum(const vector<int>& nums, const int k) {
 	int answer = 0;
-	int pref = 0;
-	unordered_map<int, int> countPref;
-	for(int R = 0; R < n; R++){
-		pref += nums[R];
-		int need = pref - k;
-		answer += countPref[need];
-		countPref[pref]++;
+	int sum = 0;
+	unordered_map<int, int> hash;
+	hash[0]++;
+	for (int R : nums) {
+		sum += R;
+		answer += hash[sum - k];
+		hash[sum]++;
 	}
 	return answer;
 }
