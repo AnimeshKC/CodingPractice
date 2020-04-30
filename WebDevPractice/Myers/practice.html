@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
   </head>
   <body>
-        <h1>Why I love Taos, N.M.</h1>
+        <h1 id="top">Why I love Taos, N.M.</h1>
         <h2>The sun is strong and the people are weird.</h2>
         <p>Taos is a small town in the mountains of northern New Mexico. It's cooler than the southern part of the state, because it's 7,000 feet high. Many of the residents are high, too. (But not me. I'm weird without any help.)</p>
         <p class="important">Warning: We have no slow lorises here.</p>
@@ -26,8 +26,14 @@
             <h2>This is a heading inside the div.</h2>
             <p>This is a paragraph inside the div. The heading inherits the font-family of the div because no font-family has been assigned to h2 headings in the CSS file. Paragraphs, on the other hand, have been styled with Georgia and its relatives. The specific styling for paragraphs overrides the styling of the div. If you want paragraphs inside the div to display in Arial and its relatives like the heading, you'd have to style these paragraphs specifically, with a class of their own.</p>
         </div>
-        <div class="ordinary">
-          <p>This is just a vanilla div</p>
-        </div>
+        <img class="has-own-line" src="http://www.asmarterwaytolearn.com/loris.jpg" alt="Loris" width="250" height="197">
+        <img class="has-own-line inset" src="http://www.asmarterwaytolearn.com/loris.jpg" alt="Loris" width="125 height="99">
+        <img class="mid" src="http://www.asmarterwaytolearn.com/loris.jpg" alt="Loris" width="250" height="197">
+        <img class="fl" src="http://www.asmarterwaytolearn.com/loris.jpg" alt="Loris" width="125 height="99">
+        <p>Deep-rooted beliefs about the supernatural powers of slow lorises, such as their purported abilities to ward off evil spirits or to cure wounds, have popularized their use in traditional medicine. Due in part to the large eyes that are an adaptation to their nocturnal lifestyle, they have also been popularized as 'cute' pets in viral videos on YouTube.</p>
+        <p class="clr">We don't want this paragraph to wrap. We want it below the picture.</p>
+        <a href="http://www.stackoverflow.com">Stack Overflow</a>
+          <p>You may wonder why there are so many exercises to do. Here's the <a href="http://asmarterwaytolearn.com/why-exercises.html">explanation.</a></p>
+          <a href="#top">Jump to the top of the page.</a>
   </body>
 </html>
