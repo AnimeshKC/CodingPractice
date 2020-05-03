@@ -1,9 +1,11 @@
 
 .vscode/
+.vs/
 
 
 # Compiled source #
 ###################
+*.pyc
 *.com
 *.class
 *.dll
@@ -39,3 +41,16 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+.vs/VSWorkspaceState.json
+.vs/ProjectSettings.json
+C++Practice/CustomArray/CustomArray.vcxproj.filters
+C++Practice/CustomArray/CustomArray.vcxproj
+C++Practice/CustomArray/CustomArray.vcxproj.user
+C++Practice/CustomArray/CustomArray.sln
+PythonPractice/__pycache__/generators.cpython-38.pyc
+.vs/CodingPractice/v16/Browse.VC.db
+PythonPractice/__pycache__/sumFirstNPrimes.cpython-38.pyc
+c#Practice/GradeBook/.vs/VSWorkspaceState.json
+c#Practice/GradeBook/.vs/GradeBook/DesignTimeBuild/.dtbcache.v2
+c#Practice/GradeBook/.vs/GradeBook/v16/.suo
+c#Practice/GradeBook/.vs/GradeBook/v16/TestStore/0/000.testlog
