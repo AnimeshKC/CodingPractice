@@ -1,24 +1,39 @@
-//Ch3 of Eloquent Javascript
+//Ch3 of Eloquent Javascript: functions
 //My notes, exercise solutions, as well as some additional practice code
 
-/*Create a function that given a target number, 
-returns a combination of adding by 3 or multiplying by 5
-, starting from 1, such that the target number is found */
+/*The book provides a function findSolution, that finds a solution to reach a target number,
+with combinations of adding by 3 and multiplying by 5, starting from 1.
+Examples: findSolution(24) -> (((1 * 3) + 5) * 3)
+findSolution(15) -> null 
 
-function findSolution(target){
-	function find(current, history, state = "add"){
-		if (current == target){
-		return history;	
-		}else if (current > target) return null;
-		else{
-		return find(current + 5, `(${history} + 5`) ||
-		find(current * 3, `(${history} * 3`);
+Personal Challenge: modify findSolution so that it can be provided the start num, the add and multiply numbers,
+and program it such that it will find the shortest possible solution. 
+
+Methodology: Use Breadth first search with an array of objects, where each object stores a current value
+and a solution set
+*/
+
+function findSolution(target, startNum = 1, addNum = 5, mulNum = 3){
+	let frontier = [{current: startNum, solution: `${startNum}`}];
+
+	while (frontier.length){
+		const front = frontier.shift();
+		if (front.current == target) return front.solution;
+		if ((front.current + addNum) <= target){
+            const solutionString = `(${front.solution} + ${addNum})`;
+			frontier.push({current: front.current + addNum, solution: solutionString});
+		}
+		if ((front.current * mulNum) <= target){
+			const solutionString = `(${front.solution} * ${mulNum})`;
+			frontier.push({current: front.current * mulNum, solution: solutionString});
 		}
 	}
-	return find(1, "1");
 }
-//findSolution(24) -> (((1 * 3) + 5) * 3)
-//findSolution(15) -> null
+console.log(findSolution(36,1, 9, 6));
+
+//console.log(findSolution(24)); -> (((1 * 3) + 5) * 3)
+//console.log(findSolution(36, 1, 9, 6)); -> ((1 * 6) * 6)
+//console.log(findSolution(15)); -> undefined
 
 //Use recursion to formulate an alternative means of checking whether a number is even
 function isEven(N){
