@@ -1,9 +1,0 @@
-C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\HeadFirstContacts\HeadFirstContacts\bin\Debug\HeadFirstContacts.exe.config
-C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\HeadFirstContacts\HeadFirstContacts\bin\Debug\HeadFirstContacts.exe
-C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\HeadFirstContacts\HeadFirstContacts\bin\Debug\HeadFirstContacts.pdb
-C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\HeadFirstContacts\HeadFirstContacts\obj\Debug\HeadFirstContacts.csprojAssemblyReference.cache
-C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\HeadFirstContacts\HeadFirstContacts\obj\Debug\HeadFirstContacts.Form1.resources
-C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\HeadFirstContacts\HeadFirstContacts\obj\Debug\HeadFirstContacts.Properties.Resources.resources
-C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\HeadFirstContacts\HeadFirstContacts\obj\Debug\HeadFirstContacts.csproj.GenerateResource.cache
-C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\HeadFirstContacts\HeadFirstContacts\obj\Debug\HeadFirstContacts.exe
-C:\Users\kcani\Desktop\Programming\c#\CSharpPracticeProjects\HeadFirstContacts\HeadFirstContacts\obj\Debug\HeadFirstContacts.pdb

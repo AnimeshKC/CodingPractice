@@ -12,14 +12,42 @@ namespace GradeBook
         static void Main(string[] args)
         {
             Book zenBook = new Book("Zen");
+            zenBook.GradeAdded += OnGradeAdded;
+            Console.WriteLine("Enter grades or q if finished entering grades");
+            while (true){
+                Console.WriteLine("Enter a grade: ");
+                string input = Console.ReadLine();
+                if (input.ToLower() == "q") break;
+                try
+                {
+                    double numberGrade = double.Parse(input);
+                    zenBook.AddGrade(numberGrade);
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
 
-            foreach (double grade in new List<double> { 76, 82, 58, 44 })
-            {
-                zenBook.addGrade(grade);
+
             }
-            zenBook.statistics();
-            zenBook.addGrade(89);
-            zenBook.statistics();
+            Statistics result;
+            result = zenBook.getStatistics();
+            Console.WriteLine($"For book owned by {zenBook.Name}, The highest grade is {result.highest}\n" +
+                $"The lowest grade is {result.lowest}\n" +
+                $"The average grade is {result.average}\n" +
+                $"The average letter grade is {result.letterGrade}");
+            zenBook.Name = "NewName";
+            Console.WriteLine($"New name is: {zenBook.Name}");
+            zenBook.Name = "";
+            Console.WriteLine($"New name is: {zenBook.Name}");
+        }
+        static void OnGradeAdded(object sender, EventArgs e)
+        {
+            Console.WriteLine("A grade was added");
         }
     }
 }
