@@ -1,0 +1,47 @@
+<!-- Chapter 15 Exercise 1 of Eloquent Javascript -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ch15</title>
+</head>
+<body>
+    <p id="emoji"> 🎈</p>
+<script>
+    /*
+Write a script that increases or decreases the size based on the 
+up and down keys. Set a size such that once the emoji exceeds the size,
+it will be changed into an explosion emoji and the key event handler will be removed.
+    */
+  let emoji = document.querySelector("#emoji"); 
+  let size;
+  function setSize(newSize){
+    size = newSize;
+    emoji.style.fontSize = size + "px";
+  }
+  setSize(10);
+  
+  function handleArrow(event){
+    if (event.key == "ArrowUp"){
+      if (size > 40){
+        emoji.textContent = "💥";
+        document.body.removeEventListener("keydown", handleArrow);
+      } else{
+        setSize(size * 1.1);
+        event.preventDefault(); //to prevent scrolling
+      }
+    } else if (event.key == "ArrowDown"){
+      setSize(size * 0.9);
+      event.preventDefault(); //to prevent scrolling
+    }
+  }
+  document.body.addEventListener("keydown", handleArrow);
+
+</script>
+
+
+
+</body>
+</html>

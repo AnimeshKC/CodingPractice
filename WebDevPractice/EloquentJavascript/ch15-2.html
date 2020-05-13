@@ -1,0 +1,43 @@
+<!-- Chapter 15 exercise 2 of Eloquent Javascript -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ch15</title>
+</head>
+<style>
+    .trail { /* className for the trail elements */
+      position: absolute;
+      height: 6px; width: 6px;
+      border-radius: 3px;
+      background: teal;
+    }
+    body {
+      height: 500px;
+    }
+</style>
+<body>
+<script>
+    /*
+    Create a script for mouse trails
+    */
+    let dots = [];
+    for (let i = 0; i < 6; i++){
+      let node = document.createElement("div");
+      node.className = "trail";
+      document.body.appendChild(node);
+      dots.push(node);
+    }
+     let currentDot = 0;
+     window.addEventListener("mousemove", (event) =>{
+       let dot = dots[currentDot];
+       dot.style.left = (event.pageX - 3) + "px";
+       dot.style.top = (event.pageY - 3) + "px";
+       //cycle through each dot my incrementing and taking the modulus
+       currentDot = (currentDot + 1) % dots.length; 
+       console.log(currentDot);
+     });
+   </script>
+</body>
+</html>
