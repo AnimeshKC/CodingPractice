@@ -1,0 +1,87 @@
+Although these notes are messy, they fulfill their job at helping me grasp the underlying concepts of working with the DOM in Javascript
+
+BASICS
+
+getting the entire document: "document.all"
+
+getElementById for ids, but for classes, 
+there's only getElementsByClassName, which does not get a singular element. 
+
+.innerText preserves previous styling, whereas .textContent does not. 
+
+document.querySelector grabs only a single element; can use any CSS selector.
+
+document.querySelector('.randomclass:last-child') and similar selectors can be used to 
+get particular elements.
+
+document.querySelectorAll obtains a NodeList of elements that fit the CSS selector. 
+
+document.querySelectorAll('selectparameter:nth-child-even') can be used to obtain even elements
+that meet the select parameter
+
+DOM selections are conveniently not read only. Assigning values will change the document. 4
+
+PARENTS AND CHILDREN 
+sampleInstance.parentNode.parentNode obtains the parent of the parent of sampleInstance. parentNodes can be continually chained. 
+
+sampleInstance.childNodes provides a NodeList of all child nodes of sampleInstance. However,
+this also includes line breaks and thus is generally inconvenient.
+
+sampleInstance.children obtains only the actual children and thus is preferred. This results in an 
+HTML collection rather than a NodeList.  The HTML collection can be indexed with sampleInstance.children[index]
+
+When changing CSS through the DOM, need to include .style. 
+Ex: "sampleInstance.children[0].style.backgroundColor = yellow;"
+
+Use sampleInstance.firstElementChild instead of sampleInstance.firstChild, as the latter 
+gives the first node, which could be a linebreak.
+
+.previousElementSibling and .nextElementSibling provide adjacent siblings to the element in question.
+
+CREATING ELEMENTS, SETTING ATTRIBUTES, ADDING TO THE DOM
+
+Create a newElement: "let newElement = document.createElement(`${type}`)", where type
+refers to the type of element to be created, such as a div or span. 
+Use .id to assign an id and .className to assign a class. 
+
+Set an attribute: "newElement.setAttribute('attributeName', 'attributeValue');"
+
+Add text to the element: "newElement.appendChildNode(document.createTextNode('Sample Text');"
+
+An element can be inserted into the DOM by choosing a container in which to insert it, using querySelector to select that container. container.insertBefore(newElement, otherElement) will insert newElement before otherElement. 
+
+EVENTS
+
+Button listeners: instead of putting it straight into the HTML button, it is better to use a 
+query selector or getElementBy to select the button in question and add it a click listener.
+Suppose a button has been selected and stored into a variable "button":
+	button.addEventListener('click', clickFunction);
+instead of defining a clickFunction, an anonomous function or an arrow function can also be used.
+
+If clickFunction has a parameter, such as clickFunction(e), the e parameter can provide additional information. 
+e.target provides the element of the element that occured, in this case, the element that was clicked. 
+e.type provides the type of event, in this case 'click'
+e.clientX and e.clientY give the position relative to the top left browser window. 
+e.offsetX and e.offsetY give the position relative to the element in question.
+
+Events 'mouseenter' vs 'mouseover': former only fires when the mouse is over the parent element; latter also fires when the mouse is over any child elements; 
+'mouseleave' and 'mouseout' works is the same kind of distinction.
+'mousemove' fires whenever the mouse is moved within the element.
+'focus' fires when within an element and 'blur' fires when out of an element
+'input' fires when input has changed, and 'change' fires when the element has changed
+
+use e.preventDefault to prevent the default action, if an event listener needs to do something different;
+for example, if you want to log a 'submit' event firing instead of submitting the HTML form.
+
+NOTES FOR SAMPLE PROJECT: https://codepen.io/bradtraversy/pen/Bwapow
+
+grab the form and itemList using selectors. Create a function to use for the submission listener. 
+prevent the default of the submit button in that function. Append the text provided to the submit to a list element that also has a delete button. Append this list element to the itemList. 
+
+Add a click listener for the itemList. the removeItem function will check whether the e.target has the class of delete, which ensures that removeItem will perform its function only when the delete button of the item is clicked.
+
+When the delete button is clicked, use a confirm prompt. If yes is selected, delete the parent of the delete button from the itemList. 
+"let li = e.target.parentElement;
+itemList.removeChild(li);"
+
+Create a 'keyup' handler for filtering text, that checks whether the inputted text is present in any of the firstChild of the list elements. Get the list of items using getElementsByTagName and convert this to an array using Array.from. If the filtering search matches the text, keep the element; otherwise hide it. Use .toLowerCase() for both the filter strings and the items so that it is case insensitive. 
