@@ -29,3 +29,7 @@ In Javascript, variables within a block scope are still in memory after the bloc
 
 "this" is dynamically scoped. Where it is written doesn't matter, only where it's called.
 Arrow functions are lexically binded, which can get over common scope problems when using the this keyword within a function of an object.
+
+## For in
+
+Avoid using for in to iterate an object because by using for in, the elements of the entire prototype chain are obtained. Instead, use Object.keys to obtain an array of keys.
