@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML5 Canvas</title>
+  </head>
+  <body>
+    <canvas id="draw" width="800" height="800"></canvas>
+    <script>
+      //global composition operator is an option for other features
+
+      //get access to the canvas
+      const canvas = document.querySelector("#draw");
+      //to work with the canvas, need to work on its context
+      //We want a 2d context
+      const ctx = canvas.getContext("2d");
+      //Make the canvas match the window size
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      //linewidth bounds
+      const lineWidthLower = 1;
+      const lineWidthUpper = 100;
+
+      //context settings for the actual drawing
+      ctx.strokeStyle = "#4287f5";
+      ctx.lineJoin = "round";
+      ctx.lineCap = "round";
+      ctx.lineWidth = Math.floor((lineWidthLower + lineWidthUpper) / 2);
+
+      //create a flag that starts as false and is true only while the user is clicking
+      let isDrawing = false;
+      //variables for ending coordinates
+      let lastX = 0;
+      let lastY = 0;
+
+      let hue = 0; //the color aspect of hsl
+      let direction = true;
+      function draw(e) {
+        //do nothing if the user hasn't clicked
+        if (!isDrawing) return;
+        //100% saturation, 50% lightness, with a programatic hue
+        ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+        ctx.beginPath();
+        //start from an x and y and move to an x and y
+        ctx.moveTo(lastX, lastY);
+        //offset values relative to the top left corner of the parent element (canvas)
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+
+        //update the last x and y after this function ends
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+        hue++; //increment the hue with each draw. 0 = red. After 360, the cycle repeats
+
+        //flip the direction after the bounds
+        if (ctx.lineWidth >= lineWidthUpper || ctx.lineWidth <= lineWidthLower)
+          direction = !direction;
+
+        if (direction) ctx.lineWidth++;
+        else ctx.lineWidth--;
+      }
+      canvas.addEventListener("mousemove", draw);
+      canvas.addEventListener("mousedown", (e) => {
+        isDrawing = true;
+        //start from where the user clicked
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+      });
+      canvas.addEventListener("mouseup", () => (isDrawing = false));
+      //stop drawing if the mouse leaves the dimensions of the canvas
+      canvas.addEventListener("mouseout", () => (isDrawing = false));
+    </script>
+
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+    </style>
+  </body>
+</html>
