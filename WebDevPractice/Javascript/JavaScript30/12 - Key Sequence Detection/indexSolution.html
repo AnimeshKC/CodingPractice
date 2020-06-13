@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Key Detection</title>
+    <script
+      type="text/javascript"
+      src="https://www.cornify.com/js/cornify.js"
+    ></script>
+  </head>
+  <body>
+    <script>
+      let pressed = []
+      const secretCode = "breadth"
+
+      function trimArray(arr, trimLength) {
+        return arr.length <= trimLength
+          ? arr
+          : arr.slice(arr.length - trimLength, arr.length)
+      }
+
+      window.addEventListener("keyup", (e) => {
+        console.log(e.key)
+        pressed.push(e.key)
+        pressed = trimArray(pressed, secretCode.length)
+        console.log(pressed)
+        if (pressed.join("") === secretCode) cornify_add()
+      })
+    </script>
+  </body>
+</html>
