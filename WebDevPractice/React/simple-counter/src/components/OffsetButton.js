@@ -9,5 +9,9 @@ export default function OffsetButton(props) {
     offsetFunction(offset)
   }
   const buttonString = `${buttonSign} ${offset}`
-  return <button onClick={handleClick}>{buttonString}</button>
+  return (
+    <button className="offsetButton" onClick={handleClick}>
+      {buttonString}
+    </button>
+  )
 }
