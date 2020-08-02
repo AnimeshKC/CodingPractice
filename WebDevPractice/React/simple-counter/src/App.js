@@ -22,7 +22,7 @@ function App() {
         <OffsetButton offset={10} offsetFunction={handleOffset}></OffsetButton>
         <OffsetButton offset={100} offsetFunction={handleOffset}></OffsetButton>
       </div>
-      <div>{count}</div>
+      <div className="countValue">{count}</div>
     </div>
   )
 }
