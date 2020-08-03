@@ -1,10 +1,20 @@
 import React, { useState } from "react"
 
 const Form = (props) => {
+  const { onSubmit } = props
   const [username, setUsername] = useState("")
   function handleSubmit(event) {
     event.preventDefault()
-    alert(`The username is: ${username}`)
+    fetch(`https://api.github.com/users/${username}`)
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data)
+        onSubmit(data)
+        setUsername("")
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-sm mx-auto">
