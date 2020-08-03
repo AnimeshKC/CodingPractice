@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import "./App.css"
 import Form from "./components/Form"
+import CardList from "./components/CardList"
 function App() {
   const [cards, setCards] = useState([])
   function addCard(newCard) {
@@ -12,6 +13,7 @@ function App() {
         Search a GitHub User
       </h1>
       <Form onSubmit={addCard} />
+      <CardList cards={cards} />
     </div>
   )
 }
