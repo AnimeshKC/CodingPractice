@@ -6,7 +6,14 @@ const Form = (props) => {
   function handleSubmit(event) {
     event.preventDefault()
     fetch(`https://api.github.com/users/${username}`)
-      .then((resp) => resp.json())
+      .then((resp) => {
+        if (resp.status >= 200 && resp.status <= 299) return resp.json()
+        else {
+          alert("User does not exist")
+          setUsername("")
+          throw Error(resp.messageText)
+        }
+      })
       .then((data) => {
         console.log(data)
         onSubmit(data)
