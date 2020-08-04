@@ -1,15 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Hello!</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <script type="module">
+      import { openDB } from "https://unpkg.com/idb?module"
+
+      //dogs database
+      ;(async () => {
+        if (!("indexedDB" in window)) {
+          console.warn("IndexedDB not supported")
+          return
+        }
+
+        const name = "dogs"
+        const version = 3
+        const storeName = "details"
+
+        const db = await openDB(name, version, {
+          upgrade(db, oldVersion, newVersion, transaction) {
+            db.createObjectStore(storeName)
+          },
+        })
+
+        await db.put(
+          storeName,
+          { name: "Roger", age: 7, weight: "24kg" },
+          "Roger"
+        )
+        await db.put(storeName, { name: "Syd", age: 6, weight: "21kg" }, "Syd")
+      })()
+    </script>
   </head>
   <body>
-    <script type="module">
-      //functions for easier indexedDB use
-      import { openDB, deleteDB } from "https://unpkg.com/idb?module"
-    </script>
-    <script src="indexDB.js"></script>
+    <h1>IndexedDB Example</h1>
   </body>
 </html>
