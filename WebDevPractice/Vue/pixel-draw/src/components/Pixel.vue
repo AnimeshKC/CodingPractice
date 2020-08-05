@@ -1,5 +1,5 @@
 <template>
-  <div :class="['pixel', color]"></div>
+  <div :class="['pixel', color, current ? 'current' : '']"></div>
 </template>
 
 <style scoped>
@@ -8,6 +8,9 @@
   width: 30px;
   height: 30px;
   box-sizing: border-box;
+}
+.pixel.current {
+  border: 4px solid yellow;
 }
 .white {
   background-color: white;
@@ -27,6 +30,7 @@ export default {
   name: "Pixel",
   props: {
     color: String,
+    current: Boolean,
   },
 };
 </script>
