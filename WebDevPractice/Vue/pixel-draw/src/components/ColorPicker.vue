@@ -15,5 +15,8 @@ export default {
   components: {
     Pixel,
   },
+  props: {
+    color: String,
+  },
 };
 </script>
