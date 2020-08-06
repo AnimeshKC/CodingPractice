@@ -1,6 +1,25 @@
 <template>
-  <div :class="['pixel', color, current ? 'current' : '']"></div>
+  <div
+    :class="['pixel', color, current ? 'current' : '']"
+    @click="interactive && changeColor(color)"
+  ></div>
 </template>
+
+<script>
+export default {
+  name: "Pixel",
+  props: {
+    color: String,
+    current: Boolean,
+    interactive: Boolean,
+  },
+  methods: {
+    changeColor: function (color) {
+      this.$root.$emit("updatecolor", color);
+    },
+  },
+};
+</script>
 
 <style scoped>
 .pixel {
@@ -8,9 +27,6 @@
   width: 30px;
   height: 30px;
   box-sizing: border-box;
-}
-.pixel.current {
-  border: 4px solid yellow;
 }
 .white {
   background-color: white;
@@ -24,13 +40,7 @@
 .darkblue {
   background-color: rgb(33, 150, 243);
 }
+.pixel.current {
+  border: 4px solid yellow;
+}
 </style>
-<script>
-export default {
-  name: "Pixel",
-  props: {
-    color: String,
-    current: Boolean,
-  },
-};
-</script>

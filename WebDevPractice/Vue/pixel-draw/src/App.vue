@@ -20,6 +20,11 @@ export default {
     Canvas,
     ColorPicker,
   },
+  mounted() {
+    this.$root.$on("updatecolor", (color) => {
+      this.color = color;
+    });
+  },
 };
 </script>
 
