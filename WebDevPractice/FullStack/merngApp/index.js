@@ -1,36 +1,11 @@
-const { ApolloServer, gql } = require("apollo-server")
+if (!process.env.NODE_ENV) require("dotenv").config()
+
+const { ApolloServer } = require("apollo-server")
 const mongoose = require("mongoose")
 
-const env = process.env.NODE_ENV || "development"
-if (env === "development") require("dotenv").config()
-
+const typeDefs = require("./graphql/typeDefs")
+const resolvers = require("./graphql/resolvers")
 const MONGODB = process.env.MONGO_CONNECTION_STRING
-const Post = require("./models/Post")
-
-const typeDefs = gql`
-  type Post {
-    id: ID!
-    body: String!
-    createdAt: String!
-    username: String!
-  }
-  type Query {
-    getPosts: [Post]
-  }
-`
-
-const resolvers = {
-  Query: {
-    async getPosts() {
-      try {
-        const posts = await Post.find()
-        return posts
-      } catch (err) {
-        throw new Error(err)
-      }
-    },
-  },
-}
 
 const server = new ApolloServer({
   typeDefs,
