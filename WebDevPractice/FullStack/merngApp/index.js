@@ -1,4 +1,5 @@
-if (!process.env.NODE_ENV) require("dotenv").config()
+if (!process.env.NODE_ENV || process.env.NODE_ENV === "development")
+  require("dotenv").config()
 
 const { ApolloServer } = require("apollo-server")
 const mongoose = require("mongoose")
