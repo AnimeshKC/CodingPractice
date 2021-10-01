@@ -24,5 +24,8 @@
     <ClCompile Include="stringCopying.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LambdaFunction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
