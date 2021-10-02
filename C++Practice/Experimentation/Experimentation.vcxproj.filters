@@ -30,7 +30,7 @@
     <ClCompile Include="TopologicalSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RandomReuse.cpp">
+    <ClCompile Include="SimpleVector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
