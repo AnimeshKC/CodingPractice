@@ -94,6 +94,7 @@ void simpleVectorDriver() {
 	std::cout << "Vector print Before popping: \n";
 	printSimpleVec(vec1);
 
+
 	std::cout << "\n Vector print After popping one: \n";
 	vec1.pop_back();
 	printSimpleVec(vec1);
@@ -101,6 +102,26 @@ void simpleVectorDriver() {
 	std::cout << "\n Vector print After clearing: \n";
 	vec1.clear();
 	printSimpleVec(vec1);
+
+	std::cout << "Trying int vector";
+
+	SimpleVector<int> vec2;
+	vec2.push_back(15);
+	int i1 = 20;
+	vec2.push_back(i1);
+	vec2.emplace_back(55);
+
+	std::cout << "Vector print Before popping: \n";
+	printSimpleVec(vec2);
+
+
+	std::cout << "\n Vector print After popping one: \n";
+	vec2.pop_back();
+	printSimpleVec(vec2);
+
+	std::cout << "\n Vector print After clearing: \n";
+	vec2.clear();
+	printSimpleVec(vec2);
 
 	std::cout << "done";
 }
