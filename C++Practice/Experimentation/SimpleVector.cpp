@@ -10,12 +10,16 @@ private:
 	//assumption: realloc is only used to grow the size, not to strip elements and shink the size
 	void realloc(size_t new_capacity) {
 		if (new_capacity <= m_capacity) return;
-		T* new_block = new T[new_capacity];
+		T* new_block = (T*)::operator new (new_capacity * sizeof(T));
 		for (size_t i = 0; i < m_size; i++) {
-			//move if possible
-			new_block[i] = std::move(m_data[i]);
+			new (&new_block[i]) T(std::move(m_data[i]));
 		}
-		delete[] m_data;
+		for (size_t i = 0; i < m_size; i++) {
+			//call the type's destructor
+			m_data[i].~T();
+		}
+		::operator delete(m_data, m_capacity * sizeof(T));
+
 		m_data = new_block;
 		m_capacity = new_capacity;
 	}
@@ -25,14 +29,15 @@ public:
 		this->realloc(2);
 	}
 	~SimpleVector() {
-		delete[] m_data;
+		clear();
+		::operator delete(m_data, m_capacity * sizeof(T));
 	}
 	void push_back(const T& val) {
 		//if the vector is full, need to allocate more memory
 		if (m_size == m_capacity) {
 			this->realloc(m_capacity + m_capacity / 2);
 		}
-		m_data[m_size++] = val;
+		new (&m_data[m_size++]) T(val);
 	}
 	size_t size() const {
 		return m_size;
@@ -41,12 +46,11 @@ public:
 		if (m_size == m_capacity) {
 			this->realloc(m_capacity + m_capacity / 2);
 		}
-		m_data[m_size++] = std::move(val);
+		new (&m_data[m_size++]) T(std::move(val));
 	}
 	void pop_back() {
 		if (m_size > 0) {
 			m_size--;
-			//delete the memory in this location
 			m_data[m_size].~T();
 		}
 	}
@@ -62,7 +66,7 @@ public:
 			realloc(m_capacity + m_capacity / 2);
 		}
 		//placement new operator
-		new(&m_data[m_size++]) T(std::forward<Args>(args)...);
+		new (&m_data[m_size++]) T(std::forward<Args>(args)...);
 	}
 	const T& operator[](size_t index) const {
 		assert(index < m_size);
@@ -76,7 +80,7 @@ public:
 
 template <typename T>
 void printSimpleVec(const SimpleVector<T> &vec) {
-	for (int i = 0; i < vec.size(); i++) {
+	for (size_t i = 0; i < vec.size(); i++) {
 		std::cout << vec[i] << "\n";
 	}
 }
