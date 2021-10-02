@@ -61,7 +61,8 @@ public:
 		if (m_size == m_capacity) {
 			realloc(m_capacity + m_capacity / 2);
 		}
-		m_data[m_size++] = T(std::forward<Args>(args)...);
+		//placement new operator
+		new(&m_data[m_size++]) T(std::forward<Args>(args)...);
 	}
 	const T& operator[](size_t index) const {
 		assert(index < m_size);
