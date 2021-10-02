@@ -19,25 +19,41 @@ private:
 		m_data = new_block;
 		m_capacity = new_capacity;
 	}
+
 public:
 	SimpleVector() {
-		realloc(2);
+		this->realloc(2);
+	}
+	~SimpleVector() {
+		delete[] m_data;
 	}
 	void push_back(const T& val) {
 		//if the vector is full, need to allocate more memory
 		if (m_size == m_capacity) {
-			realloc(m_capacity + m_capacity / 2);
+			this->realloc(m_capacity + m_capacity / 2);
 		}
 		m_data[m_size++] = val;
 	}
-	size_t size() {
+	size_t size() const {
 		return m_size;
 	}
 	void push_back(const T&& val) {
 		if (m_size == m_capacity) {
-			realloc(m_capacity + m_capacity / 2);
+			this->realloc(m_capacity + m_capacity / 2);
 		}
 		m_data[m_size++] = std::move(val);
+	}
+	void pop_back() {
+		if (m_size > 0) {
+			m_size--;
+			//delete the memory in this location
+			m_data[m_size].~T();
+		}
+	}
+	void clear() {
+		while (m_size > 0) {
+			this->pop_back();
+		}
 	}
 	//create the type within the class
 	template <typename... Args>
@@ -57,13 +73,29 @@ public:
 	}
 };
 
+template <typename T>
+void printSimpleVec(const SimpleVector<T> &vec) {
+	for (int i = 0; i < vec.size(); i++) {
+		std::cout << vec[i] << "\n";
+	}
+}
 void simpleVectorDriver() {
 	SimpleVector<std::string> vec1;
 	vec1.push_back("hello");
 	std::string s1 = "This string";
 	vec1.push_back(s1);
 	vec1.emplace_back("another string");
-	for (int i = 0; i < vec1.size(); i++) {
-		std::cout << vec1[i] << "\n";
-	}
+
+	std::cout << "Vector print Before popping: \n";
+	printSimpleVec(vec1);
+
+	std::cout << "\n Vector print After popping one: \n";
+	vec1.pop_back();
+	printSimpleVec(vec1);
+
+	std::cout << "\n Vector print After clearing: \n";
+	vec1.clear();
+	printSimpleVec(vec1);
+
+	std::cout << "done";
 }
