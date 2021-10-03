@@ -1,8 +1,58 @@
 #include "assert.h"
 #include <string>
 #include <iostream>
+
+
+template <typename Vector>
+class SimpleVectorIterator {
+	using ValueType = typename Vector::ValueType;
+
+private:
+	ValueType* m_ptr;
+public:
+	SimpleVectorIterator(ValueType* ptr): m_ptr(ptr) {}
+
+	SimpleVectorIterator& operator++() {
+		m_ptr++;
+		return *this;
+	}
+	SimpleVectorIterator operator++(int) {
+		//make a copy of the current iterator to return and then increment
+		SimpleVectorIterator iterator = *this;
+		++(*this);
+		return iterator;
+	}
+	SimpleVectorIterator& operator--() {
+		m_ptr--;
+		return *this;
+	}
+	SimpleVectorIterator operator--(int) {
+		SimpleVectorIterator iterator = *this;
+		--(*this);
+		return iterator;
+	}
+	ValueType& operator[](int index) {
+		return *(m_ptr + index);
+	}
+	ValueType* operator->() {
+		return m_ptr;
+	}
+	ValueType& operator*() {
+		return *m_ptr;
+	}
+	bool operator==(const SimpleVectorIterator& other) const {
+		return m_ptr == other.m_ptr;
+	}
+	bool operator!=(const SimpleVectorIterator& other) const {
+		return !(m_ptr == other.m_ptr);
+	}
+
+};
 template <typename T>
 class SimpleVector {
+public:
+	using ValueType = T;
+	using Iterator = SimpleVectorIterator<SimpleVector<T>>;
 private:
 	size_t m_size = 0;
 	size_t m_capacity = 0;
@@ -46,7 +96,8 @@ public:
 		if (m_size == m_capacity) {
 			this->realloc(m_capacity + m_capacity / 2);
 		}
-		new (&m_data[m_size++]) T(std::move(val));
+
+		new (&m_data[m_size++]) T(std::move(val)); //-V1030
 	}
 	void pop_back() {
 		if (m_size > 0) {
@@ -76,14 +127,27 @@ public:
 		assert(index < m_size);
 		return m_data[index];
 	}
+	Iterator begin() {
+		return Iterator(m_data);
+	}
+	Iterator end() {
+		return Iterator(m_data + m_size);
+	}
 };
 
 template <typename T>
-void printSimpleVec(const SimpleVector<T> &vec) {
-	for (size_t i = 0; i < vec.size(); i++) {
-		std::cout << vec[i] << "\n";
+//cannot use const because have not written const iterator
+void printSimpleVec(/*const*/SimpleVector<T>& vec) {
+	//for (size_t i = 0; i < vec.size(); i++) {
+	//	std::cout << vec[i] << "\n";
+	//}
+	
+	//iterator version
+	for (auto& value : vec) {
+		std::cout << value << "\n";
 	}
 }
+
 void simpleVectorDriver() {
 	SimpleVector<std::string> vec1;
 	vec1.push_back("hello");
@@ -103,7 +167,7 @@ void simpleVectorDriver() {
 	vec1.clear();
 	printSimpleVec(vec1);
 
-	std::cout << "Trying int vector";
+	std::cout << "Trying int vector \n";
 
 	SimpleVector<int> vec2;
 	vec2.push_back(15);
