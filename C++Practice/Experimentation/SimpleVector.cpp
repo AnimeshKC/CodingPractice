@@ -1,16 +1,21 @@
 #include "assert.h"
 #include <string>
 #include <iostream>
-
+#include <iterator>
+#include <cstddef>
 
 template <typename Vector>
 class SimpleVectorIterator {
-	using ValueType = typename Vector::ValueType;
+	using value_type = typename Vector::ValueType;
+	using iterator_category = std::forward_iterator_tag;
+	using difference_type = std::ptrdiff_t;
+	using pointer = value_type*;
+	using reference = value_type&;
 
 private:
-	ValueType* m_ptr;
+	value_type* m_ptr;
 public:
-	SimpleVectorIterator(ValueType* ptr): m_ptr(ptr) {}
+	SimpleVectorIterator(value_type* ptr): m_ptr(ptr) {}
 
 	SimpleVectorIterator& operator++() {
 		m_ptr++;
@@ -22,22 +27,24 @@ public:
 		++(*this);
 		return iterator;
 	}
-	SimpleVectorIterator& operator--() {
-		m_ptr--;
-		return *this;
-	}
-	SimpleVectorIterator operator--(int) {
-		SimpleVectorIterator iterator = *this;
-		--(*this);
-		return iterator;
-	}
-	ValueType& operator[](int index) {
+	//This will be a forward iterator so it will not need decrementing
+
+	//SimpleVectorIterator& operator--() {
+	//	m_ptr--;
+	//	return *this;
+	//}
+	//SimpleVectorIterator operator--(int) {
+	//	SimpleVectorIterator iterator = *this;
+	//	--(*this);
+	//	return iterator;
+	//}
+	value_type& operator[](int index) {
 		return *(m_ptr + index);
 	}
-	ValueType* operator->() {
+	value_type* operator->() {
 		return m_ptr;
 	}
-	ValueType& operator*() {
+	value_type& operator*() {
 		return *m_ptr;
 	}
 	bool operator==(const SimpleVectorIterator& other) const {
@@ -48,11 +55,63 @@ public:
 	}
 
 };
+template <typename Vector>
+class SimpleVectorConstIterator {
+	using value_type = typename Vector::ValueType;
+	using iterator_category = std::forward_iterator_tag;
+	using difference_type = std::ptrdiff_t;
+	using pointer = value_type*;
+	using reference = value_type&;
+
+private:
+	value_type* m_ptr;
+public:
+	SimpleVectorConstIterator(value_type* ptr) : m_ptr(ptr) {}
+
+	SimpleVectorConstIterator& operator++() {
+		m_ptr++;
+		return *this;
+	}
+	SimpleVectorConstIterator operator++(int) {
+		//make a copy of the current iterator to return and then increment
+		SimpleVectorConstIterator iterator = *this;
+		++(*this);
+		return iterator;
+	}
+	//This will be a forward iterator so it will not need decrementing
+
+	//SimpleVectorConstIterator& operator--() {
+	//	m_ptr--;
+	//	return *this;
+	//}
+	//SimpleVectorConstIterator operator--(int) {
+	//	SimpleVectorIterator iterator = *this;
+	//	--(*this);
+	//	return iterator;
+	//}
+	value_type& operator[](int index) {
+		return *(m_ptr + index);
+	}
+	value_type* operator->() const {
+		return m_ptr;
+	}
+	value_type& operator*() const {
+		return *m_ptr;
+	}
+	bool operator==(const SimpleVectorConstIterator& other) const {
+		return m_ptr == other.m_ptr;
+	}
+	bool operator!=(const SimpleVectorConstIterator& other) const {
+		return !(m_ptr == other.m_ptr);
+	}
+
+};
 template <typename T>
 class SimpleVector {
 public:
 	using ValueType = T;
 	using Iterator = SimpleVectorIterator<SimpleVector<T>>;
+	using ConstIterator = SimpleVectorConstIterator<SimpleVector<T>>;
 private:
 	size_t m_size = 0;
 	size_t m_capacity = 0;
@@ -133,17 +192,17 @@ public:
 	Iterator end() {
 		return Iterator(m_data + m_size);
 	}
+	ConstIterator begin() const {
+		return ConstIterator(m_data);
+	}
+	ConstIterator end() const {
+		return ConstIterator(m_data + m_size);
+	}
 };
 
 template <typename T>
-//cannot use const because have not written const iterator
-void printSimpleVec(/*const*/SimpleVector<T>& vec) {
-	//for (size_t i = 0; i < vec.size(); i++) {
-	//	std::cout << vec[i] << "\n";
-	//}
-	
-	//iterator version
-	for (auto& value : vec) {
+void printSimpleVec(const SimpleVector<T>& vec) {
+	for (const auto& value : vec) {
 		std::cout << value << "\n";
 	}
 }
