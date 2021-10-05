@@ -144,6 +144,7 @@
     <ClCompile Include="Interfaces.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="SimpleVector.cpp" />
+    <ClCompile Include="SpecializedTemplates.cpp" />
     <ClCompile Include="stringCopying.cpp" />
     <ClCompile Include="TopologicalSort.cpp" />
   </ItemGroup>
