@@ -28,10 +28,10 @@ public:
 		m_container[m_current++] = val;
 		m_tail = m_current - 1;
 
-		if (m_size < m_capacity) {
-			m_size++;
+		if (m_size++ >= m_capacity) {
+			m_size = m_capacity;
+			incrementHead();
 		}
-		incrementHead();
 	}
 	
 	void pop() {
@@ -80,3 +80,14 @@ private:
 		}
 	}
 };
+
+void CircularBufferDriver() {
+	CircularBuffer<int, 10> cbuff;
+	for (int i = 0; i < 13; i++) {
+		cbuff.push_back(i);
+	}
+	while (!cbuff.empty()) {
+		std::cout << "popping index: " << cbuff.head() << "\n";
+		cbuff.pop();
+	}
+}
