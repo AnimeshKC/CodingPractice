@@ -5,6 +5,7 @@ void simpleVectorDriver();
 void SpecializedIsGreaterDriver();
 void AlwaysExceptionDriver();
 void CircularBufferDriver();
+void wordListingDriver();
 int main() {
-	CircularBufferDriver();
+	wordListingDriver();
 }

@@ -42,5 +42,13 @@
     <ClCompile Include="CircularBuffer.hpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MultiMapWordListing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="shakespeare.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
