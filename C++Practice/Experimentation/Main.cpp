@@ -6,6 +6,7 @@ void SpecializedIsGreaterDriver();
 void AlwaysExceptionDriver();
 void CircularBufferDriver();
 void wordListingDriver();
+void OutputIteratorDriver();
 int main() {
-	wordListingDriver();
+	OutputIteratorDriver();
 }
