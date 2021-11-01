@@ -48,6 +48,9 @@
     <ClCompile Include="OutputIterator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratorIterator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="shakespeare.txt">

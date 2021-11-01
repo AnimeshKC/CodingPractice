@@ -7,6 +7,7 @@ void AlwaysExceptionDriver();
 void CircularBufferDriver();
 void wordListingDriver();
 void OutputIteratorDriver();
+void GeneratorIteratorDriver();
 int main() {
-	OutputIteratorDriver();
+	GeneratorIteratorDriver();
 }

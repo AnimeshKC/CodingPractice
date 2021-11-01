@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CircularBuffer.hpp" />
+    <ClCompile Include="GeneratorIterator.cpp" />
     <ClCompile Include="LambdaFunction.cpp" />
     <ClCompile Include="Interfaces.cpp" />
     <ClCompile Include="Main.cpp" />
