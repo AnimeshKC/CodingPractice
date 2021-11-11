@@ -70,9 +70,9 @@ public:
 
 };
 
-void GeneratorIteratorDriver() {
-	PrimeGeneratorIterator<> start;
-	PrimeGeneratorIterator<> end(1000);
-	std::copy(start, end, std::ostream_iterator<long>(std::cout, " "));
-	std::cout << "\n";
-}
+//void GeneratorIteratorDriver() {
+//	PrimeGeneratorIterator<> start;
+//	PrimeGeneratorIterator<> end(1000);
+//	std::copy(start, end, std::ostream_iterator<long>(std::cout, " "));
+//	std::cout << "\n";
+//}
