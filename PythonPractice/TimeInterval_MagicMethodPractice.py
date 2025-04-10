@@ -1,6 +1,7 @@
 
 """
-Class to practice magic methods: multiplication, addition, and string
+Class to practice magic methods: multiplication, addition, subtraction, and string
+Addition and subtraction can take either a TimeInterval or an int
 """
 
 class TimeInterval:
@@ -20,6 +21,9 @@ class TimeInterval:
         return ((aTimeInterval.hours * 3600) + (aTimeInterval.minutes * 60) 
         + (aTimeInterval.seconds))
     def get_time_interval_from_seconds(new_full_seconds):
+        #No negative time
+        if new_full_seconds < 0:
+            return TimeInterval(0, 0, 0)
         new_hours = TimeInterval.get_hours_unit(new_full_seconds)
         new_minutes = TimeInterval.get_minutes_unit(new_full_seconds)
         new_seconds = TimeInterval.get_seconds_unit(new_full_seconds)
@@ -30,16 +34,27 @@ class TimeInterval:
         new_full_seconds = curr_full_seconds * val
         
         return TimeInterval.get_time_interval_from_seconds(new_full_seconds)
-    def __add__(self, otherTimeInterval):
-        if not isinstance(otherTimeInterval, TimeInterval):
-            raise TypeError("argument is the wrong type")
+    def __add__(self, other):
+        if isinstance(other, int):
+            return TimeInterval.get_time_interval_from_seconds(TimeInterval.get_full_seconds(self) + 
+        other)
+        elif not isinstance(other, TimeInterval):
+            raise TypeError("argument is neither an int nor a TimeInterval type")
         return TimeInterval.get_time_interval_from_seconds(TimeInterval.get_full_seconds(self) + 
-        TimeInterval.get_full_seconds(otherTimeInterval))
-        
+        TimeInterval.get_full_seconds(other))
+    def __sub__(self, other):    
+        if isinstance(other, int):
+            return TimeInterval.get_time_interval_from_seconds(TimeInterval.get_full_seconds(self) - 
+        other)
+        elif not isinstance(other, TimeInterval):
+            raise TypeError("argument is neither an int nor a TimeInterval type")
+        return TimeInterval.get_time_interval_from_seconds(TimeInterval.get_full_seconds(self) - 
+        TimeInterval.get_full_seconds(other))        
     def __str__(self):
         return f"{self.hours}h; {self.minutes}m; {self.seconds}s"
 
 if __name__ == "__main__":
     my_time = TimeInterval(1, 55, 23)
-    print(my_time + TimeInterval(4, 0, 0))
-    print(TimeInterval.get_full_seconds(my_time))
+    print(my_time - TimeInterval(1, 25, 4))
+    print(my_time + 24)
+    
